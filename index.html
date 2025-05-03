@@ -38,17 +38,20 @@
 
     #fullscreenBtn {
       margin-top: 1rem;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      background-color: #ffb451;
+      padding: 0.5rem 0.75rem;
+      background-color: #ffb45100;
       border: none;
-      color: #000;
+      border-radius: 10px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: background-color 0.3s;
     }
 
     #fullscreenBtn:hover {
-      background-color: #ffaa00;
+      background-color: hsl(0, 0%, 100%);
+      color:#000;
     }
 
     .section-title {
@@ -65,14 +68,14 @@
       border-radius: 18px;
       border: 1px solid #2e2e2e;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(255, 136, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(255, 136, 0, 0.349);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       height: 100%;
     }
 
     .card:hover {
       transform: scale(1.02);
-      box-shadow: 0 0 20px rgba(255, 196, 0, 0.3);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.384);
     }
 
     .card-img-top {
@@ -121,24 +124,6 @@
         height: 250px;
       }
     }
-    #fullscreenBtn {
-    margin-top: 1rem;
-    padding: 0.5rem 0.75rem;
-    background-color: #ffb45100;
-    border: none;
-    border-radius: 10px;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-    }
-
-    #fullscreenBtn:hover {
-    background-color: hsl(0, 0%, 100%);
-    color:#000
-    }
-
   </style>
 </head>
 <body>
@@ -152,13 +137,15 @@
           <path d="M1 1v5h2V3h3V1H1zm14 0h-5v2h3v3h2V1zM1 14v-5h2v3h3v2H1zm14 0h-5v-2h3v-3h2v5z"/>
         </svg>
       </button>
-          </div>
+    </div>
   </header>
 
-  <!-- NOVO GRID DE JOGOS -->
   <div class="container py-4">
-    <h2 class="section-title">🎮 Jogos Disponíveis</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="gameGrid"></div>
+    <h2 class="section-title">⚡ Jogos Rápidos</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="quickGamesGrid"></div>
+
+    <h2 class="section-title mt-5">🌍 Outras Aventuras</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="adventureGamesGrid"></div>
   </div>
 
   <!-- Modal -->
@@ -178,21 +165,14 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const games = [
+      const quickGames = [
         {
           title: "Richie's Plank Experience",
           image: "src/img/ITJj5Joj95z3bZP5SlJBeSNHBfw6pKA_HOxNPmo6Cl8.webp",
           description: "Experiência de altura em VR.",
           video: "src/video/Richie's Plank Experience Oculus Quest Trailer.mp4"
-        },
-        {
-          title: "Beat Saber",
-          image: "src/img/Beat Saber.jpeg",
-          description: "Corte blocos no ritmo da música.",
-          video: "src/video/If You Want to ESCAPE with Me...Beat Saber ft SwanVR.mp4"
         },
         {
           title: "Coaster Combat",
@@ -205,6 +185,15 @@
           image: "src/img/epicrollercoasters.jpeg",
           description: "Explore montanhas-russas insanas!",
           video: "src/video/Epic Roller Coasters 2021!.mp4"
+        }
+      ];
+
+      const adventureGames = [
+        {
+          title: "Beat Saber",
+          image: "src/img/Beat Saber.jpeg",
+          description: "Corte blocos no ritmo da música.",
+          video: "src/video/If You Want to ESCAPE with Me...Beat Saber ft SwanVR.mp4"
         },
         {
           title: "Pistol Whip",
@@ -244,32 +233,39 @@
         }
       ];
 
-      const grid = document.getElementById('gameGrid');
+      const quickGrid = document.getElementById('quickGamesGrid');
+      const adventureGrid = document.getElementById('adventureGamesGrid');
+
+      function renderGames(games, container) {
+        games.forEach(game => {
+          const col = document.createElement('div');
+          col.className = 'col';
+
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.onclick = () => openModal(game);
+
+          card.innerHTML = `
+            <img src="${game.image}" class="card-img-top" alt="${game.title}">
+            <div class="card-body">
+              <h5 class="card-title">${game.title}</h5>
+              <p class="game-desc">${game.description}</p>
+            </div>
+          `;
+
+          col.appendChild(card);
+          container.appendChild(col);
+        });
+      }
+
+      renderGames(quickGames, quickGrid);
+      renderGames(adventureGames, adventureGrid);
+
       const modal = new bootstrap.Modal(document.getElementById('gameModal'));
       const modalTitle = document.getElementById('modalTitle');
       const modalDescription = document.getElementById('modalDescription');
       const videoFile = document.getElementById("modalVideoFile");
       const videoYoutube = document.getElementById("modalVideoYoutube");
-
-      games.forEach(game => {
-        const col = document.createElement('div');
-        col.className = 'col';
-
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.onclick = () => openModal(game);
-
-        card.innerHTML = `
-          <img src="${game.image}" class="card-img-top" alt="${game.title}">
-          <div class="card-body">
-            <h5 class="card-title">${game.title}</h5>
-            <p class="game-desc">${game.description}</p>
-          </div>
-        `;
-
-        col.appendChild(card);
-        grid.appendChild(col);
-      });
 
       function openModal(game) {
         modalTitle.textContent = game.title;
@@ -299,7 +295,6 @@
         videoFile.src = "";
       });
 
-      // Botão de tela cheia
       document.getElementById('fullscreenBtn').addEventListener('click', function () {
         const elem = document.documentElement;
 
