@@ -141,11 +141,13 @@
   </header>
 
   <div class="container py-4">
-    <h2 class="section-title">⚡ Jogos Rápidos</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="quickGamesGrid"></div>
+  
 
     <h2 class="section-title mt-5">🌍 Outras Aventuras</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="adventureGamesGrid"></div>
+    <br>
+    <h2 class="section-title">⚡ Jogos Rápidos</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="quickGamesGrid"></div>
   </div>
 
   <!-- Modal -->
@@ -180,58 +182,59 @@
           description: "Montanha-russa com ação!",
           video: "src/video/Coaster Combat Trailer.mp4"
         },
-        {
-          title: "Epic Roller Coasters",
-          image: "src/img/epicrollercoasters.jpeg",
-          description: "Explore montanhas-russas insanas!",
-          video: "src/video/Epic Roller Coasters 2021!.mp4"
-        }
       ];
 
       const adventureGames = [
-        {
-          title: "Beat Saber",
-          image: "src/img/Beat Saber.jpeg",
-          description: "Corte blocos no ritmo da música.",
-          video: "src/video/If You Want to ESCAPE with Me...Beat Saber ft SwanVR.mp4"
-        },
-        {
-          title: "Pistol Whip",
-          image: "src/img/PISTOLWHIP.png",
-          description: "Tiro e música em ritmo intenso.",
-          video: "src/video/Pistol Whip - VR Launch Trailer _ Oculus Quest, PC VR.mp4"
-        },
-        {
-          title: "SUPERHOT",
-          image: "src/img/hot.avif",
-          description: "O tempo só anda quando você se move.",
-          video: "src/video/SUPERHOT VR Release Trailer.mp4"
-        },
-        {
-          title: "Fruit Ninja",
-          image: "src/img/fd16a9a8-1095-4e93-9ac3-0036d81db998.jpg",
-          description: "Fatie frutas em alta velocidade!",
-          video: "src/video/Fruit Ninja VR - Gameplay Trailer _ PS VR(720P_HD).mp4"
-        },
-        {
-          title: "Resident Evil 4",
-          image: "src/img/resident evil4.jpg",
-          description: "Horror e ação em realidade virtual.",
-          video: "src/video/Resident Evil 4 VR - Gameplay Village Fight _ Chainsaw Man (4K 60FPS)(720P_60FPS).mp4"
-        },
-        {
-          title: "Angry Birds VR: Isle of Pigs",
-          image: "src/img/image (4).png",
-          description: "Atire os pássaros em estruturas em VR.",
-          video: "src/video/Angry Birds VR_ Isle of Pigs Launch Trailer(1080P_60FPS).mp4"
-        },
-        {
-          title: "Tiny Archers",
-          image: "src/img/pequeno.jpg",
-          description: "Defenda a torre com seu arco!",
-          video: "src/video/Tiny Archers _ Launch Trailer _ Meta Quest Platform(720P_60FPS).mp4"
-        }
-      ];
+  {
+    title: "Angry Birds VR: Isle of Pigs",
+    image: "src/img/image (4).png",
+    description: "Atire os pássaros em estruturas em VR.",
+    video: "src/video/Angry Birds VR_ Isle of Pigs Launch Trailer(1080P_60FPS).mp4"
+  },
+  {
+    title: "Beat Saber",
+    image: "src/img/Beat Saber.jpeg",
+    description: "Corte blocos no ritmo da música.",
+    video: "src/video/BEATO SABE.mp4"
+  },
+  {
+    title: "Drop Dead",
+    image: "src/img/dropdead.jpg",
+    description: "Atire em hordas de zumbis!",
+    video: "src/video/DROPDEAD.mp4"
+  },
+  {
+    title: "Fruit Ninja",
+    image: "src/img/fd16a9a8-1095-4e93-9ac3-0036d81db998.jpg",
+    description: "Fatie frutas em alta velocidade!",
+    video: "src/video/Fruit Ninja VR - Gameplay Trailer _ PS VR(720P_HD).mp4"
+  },
+  {
+    title: "Pistol Whip",
+    image: "src/img/PISTOLWHIP.png",
+    description: "Tiro e música em ritmo intenso.",
+    video: "src/video/Pistol Whip - VR Launch Trailer _ Oculus Quest, PC VR.mp4"
+  },
+  {
+    title: "Resident Evil 4",
+    image: "src/img/resident evil4.jpg",
+    description: "Horror e ação em realidade virtual.",
+    video: "src/video/Resident Evil 4 VR - Gameplay Village Fight _ Chainsaw Man (4K 60FPS)(720P_60FPS).mp4"
+  },
+  {
+    title: "SUPERHOT",
+    image: "src/img/hot.avif",
+    description: "O tempo só anda quando você se move.",
+    video: "src/video/SUPERHOT VR Release Trailer.mp4"
+  },
+  {
+    title: "Tiny Archers",
+    image: "src/img/pequeno.jpg",
+    description: "Defenda a torre com seu arco!",
+    video: "src/video/Tiny Archers _ Launch Trailer _ Meta Quest Platform(720P_60FPS).mp4"
+  }
+];
+
 
       const quickGrid = document.getElementById('quickGamesGrid');
       const adventureGrid = document.getElementById('adventureGamesGrid');
